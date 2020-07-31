@@ -69,4 +69,24 @@ class DinosaurFactoryTest extends TestCase
             ['large herbivore', true, false],
         ];
     }
+
+    /**
+     * @dataProvider getHugeDinosaurSpecTests
+     */
+    public function testItGrowsAHugeDinosaur(string $specification)
+    {
+        $dinosaur = $this->factory->growFromSpecification($specification);
+        $this->assertGreaterThanOrEqual(Dinosaur::HUGE, $dinosaur->getLength());
+    }
+
+    public function getHugeDinosaurSpecTests()
+    {
+        return [
+            ['huge dinosaur'],
+            ['huge dino'],
+            ['huge'],
+            ['omg'],
+            ['😱'],
+        ];
+    }
 }
