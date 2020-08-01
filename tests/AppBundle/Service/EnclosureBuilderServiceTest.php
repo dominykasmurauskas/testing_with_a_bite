@@ -22,7 +22,7 @@ class EnclosureBuilderServiceTest extends TestCase
 
         $em->expects($this->atLeastOnce())
             ->method('flush');
-        
+
         $dinosaurFactory = $this->createMock(DinosaurFactory::class);
         $dinosaurFactory->expects($this->exactly(2))
             ->method('growFromSpecification')
