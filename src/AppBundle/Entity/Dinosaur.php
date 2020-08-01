@@ -58,6 +58,13 @@ class Dinosaur
         return $this;
     }
 
+    public function setEnclosure(Enclosure $enclosure): self
+    {
+        $this->enclosure = $enclosure;
+
+        return $this;
+    }
+
     public function getSpecification(): string
     {
         return sprintf(
