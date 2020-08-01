@@ -7,6 +7,10 @@ services:
 
     test.AppBundle\Service\EnclosureBuilderService: '@AppBundle\Service\EnclosureBuilderService'
 
+doctrine:
+    dbal:
+        url: 'sqlite:///%kernel.project_dir%/var/data/test.sqlite'
+
 framework:
     test: ~
     session:
