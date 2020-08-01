@@ -57,7 +57,9 @@ class DinosaurFactoryTest extends TestCase
      */
     public function testItGrowsDinosaurFromASpecification(string $spec, bool $expectedIsCarnivorous)
     {
-        $this->lengthDeterminator->method('getLengthFromSpecification')
+        $this->lengthDeterminator->expects($this->once())
+            ->method('getLengthFromSpecification')
+            ->with($spec)
             ->willReturn(20);
 
         $dinosaur = $this->factory->growFromSpecification($spec);
@@ -69,7 +71,7 @@ class DinosaurFactoryTest extends TestCase
     public function getSpecificationTests()
     {
         return [
-            //specification, is large, is carnivorous
+            //specification, is carnivorous
             ['large carnivorous dinosaur', true],
             'default response' => ['give me all the cookies!!!', false],
             ['large herbivore', false],
