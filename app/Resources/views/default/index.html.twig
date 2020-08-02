@@ -22,4 +22,30 @@
         {% endfor %}
         </tbody>
     </table>
+    <h3>JSONP Test</h3>
+    <ul id="gists"></ul>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // $.getJSON('http://iot.dominykasmurauskas.lt/api/motion-detection-state?callback=?', function(response){
+            //     console.log('script injected');
+            // });
+
+            $.ajax({
+                url : 'http://iot.dominykasmurauskas.lt/api/motion-detection-state',
+                type : 'GET',
+                dataType:'json',
+                success : function(data) {
+                    console.log("Ajax request successful!");
+                },
+                error : function(request,error)
+                {
+                    console.log("Ajax request threw an error!")
+                }
+            });
+        });
+    </script>
 {% endblock %}
