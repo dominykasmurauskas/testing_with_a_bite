@@ -23,3 +23,27 @@
         </tbody>
     </table>
 {% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // $.getJSON('http://iot.dominykasmurauskas.lt/api/motion-detection-state?callback=?', function(response){
+            //     console.log('script loaded');
+            // });
+
+            $.ajax({
+                url : 'http://iot.dominykasmurauskas.lt/api/motion-detection-state',
+                type : 'GET',
+                dataType:'json',
+                success : function(data) {
+                    console.log("Ajax request successful!");
+                },
+                error : function(request,error)
+                {
+                    console.log("Ajax request threw an error!")
+                }
+            });
+        });
+    </script>
+{% endblock %}
